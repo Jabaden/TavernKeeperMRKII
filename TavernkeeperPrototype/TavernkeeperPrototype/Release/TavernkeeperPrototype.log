@@ -1,0 +1,23 @@
+﻿Build started 11/12/2015 3:36:55 PM.
+     1>Project "D:\Users\Andy\Desktop\new 170 project\TavernkeeperPrototype\TavernkeeperPrototype\TavernkeeperPrototype.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\VC\bin\CL.exe /c /I"D:\Program Files (x86)\SFML\SFML-2.3.1\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D SFML_STATIC /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+       Link:
+         D:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Users\Andy\Desktop\new 170 project\TavernkeeperPrototype\Release\TavernkeeperPrototype.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Program Files (x86)\SFML\SFML-2.3.1\lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "sfml-graphics-s.lib" "sfml-window-s.lib" "sfml-system-s.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Users\Andy\Desktop\new 170 project\TavernkeeperPrototype\Release\TavernkeeperPrototype.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Users\Andy\Desktop\new 170 project\TavernkeeperPrototype\Release\TavernkeeperPrototype.lib" /MACHINE:X86 /SAFESEH Release\Comparer.obj
+         Release\Drink.obj
+         Release\DrinkCard.obj
+         Release\DrinkDeck.obj
+         Release\DrinkSelector.obj
+         Release\GameplayManager.obj
+         Release\main.obj
+         Release\Tool.obj
+         Release\ToolSelector.obj
+         Generating code
+         Finished generating code
+         TavernkeeperPrototype.vcxproj -> D:\Users\Andy\Desktop\new 170 project\TavernkeeperPrototype\Release\TavernkeeperPrototype.exe
+     1>Done Building Project "D:\Users\Andy\Desktop\new 170 project\TavernkeeperPrototype\TavernkeeperPrototype\TavernkeeperPrototype.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.36
