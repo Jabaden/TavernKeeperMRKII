@@ -4,7 +4,7 @@
 #include <ostream>
 #include <fstream>
 #include <time.h>
-#include "Comparer.h"
+#include "GameplayManager.h"
 //#include "GameVariables.h"
 using namespace std;
 int main()
@@ -20,25 +20,37 @@ int main()
 	test->shuffleDeck();
 	test->drawCard();
 
-	GameplayManager* gameplayManager = new GameplayManager();
+	sf::Text* completionText = new sf::Text();
+	sf::Font* completionFont = new sf::Font();
+	sf::Font font;
+	if (!font.loadFromFile("pacText.ttf")){
+		return EXIT_FAILURE;
+	}
+	//completionFont->loadFromFile("pacText.tff");
+	completionText->setFont(font);
+	completionText->setString("this is a test string");
+	completionText->setCharacterSize(30);
+	completionText->setPosition(100, 100);
+	completionText->setColor(sf::Color::Black);
 
-	Comparer* comparer = new Comparer();
+
+	GameplayManager* gameplayManager = new GameplayManager();
+	//Comparer* comparer = new Comparer();
 
 	//Drink* testDrink9 = new Drink(100,100);
 	//int hello = testDrink9->getYpos();
 
 	DrinkSelector* drinkSelectorTest = new DrinkSelector();
 	drinkSelectorTest->incrementDrink();
-	drinkSelectorTest->raiseDrink();
-	drinkSelectorTest->choose();
+	//drinkSelectorTest->raiseDrink();
+	//drinkSelectorTest->choose();
 
 	ToolSelector* toolSelectorTest = new ToolSelector();
-	toolSelectorTest->incrementTool();
-	toolSelectorTest->raiseTool();
-	toolSelectorTest->choose();
+	//toolSelectorTest->incrementTool();
+	//toolSelectorTest->raiseTool();
+	//toolSelectorTest->choose();
 
 	//FILE I/O 
-
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -61,6 +73,8 @@ int main()
 					}
 					else{
 						Drink* rotateDrink = drinkSelectorTest->getDVector()->at(drinkSelectorTest->getPosition());
+						rotateDrink->setCurrentlyPouringTrue();
+						//rotateDrink->getSprite()->
 					}
 				}
 				if (event.key.code == sf::Keyboard::A){
@@ -72,19 +86,42 @@ int main()
 					toolSelectorTest->raiseTool();
 				}
 				if (event.key.code == sf::Keyboard::Space){
-					toolSelectorTest->choose();
-					drinkSelectorTest->choose();
-					comparer->compareHands(toolSelectorTest, drinkSelectorTest, gameplayManager);
+					if (gameplayManager->getPouring() == false){
+						toolSelectorTest->choose();
+						drinkSelectorTest->choose();
+						gameplayManager->compareHands(toolSelectorTest, drinkSelectorTest, gameplayManager);
+					}
+					//end pouring game
+					else if (gameplayManager->getPouring()){
+						gameplayManager->togglePouring();
+						drinkSelectorTest->getDVector()->at(drinkSelectorTest->getPosition())->recall();
+						toolSelectorTest->getTVector()->at(toolSelectorTest->getPosition())->recall();
+						toolSelectorTest->getTVector()->at(toolSelectorTest->getPosition())->resetCompletion();
+					}
+					
 				}
+			}
+			//DIDNT CLICK ANYTHING
+			else if(gameplayManager->getPouring()){
+				Drink* rotateDrink = drinkSelectorTest->getDVector()->at(drinkSelectorTest->getPosition());
+				rotateDrink->setCurrentlyPouringFalse();
 			}
 		}
 		if (testClock.getElapsedTime().asSeconds() > 2){
 			testClock.restart();
 			//testCard.pickRandomAttribute();
 		}
+
+		if (gameplayManager->getPouring()){
+			Tool tempTool = *(toolSelectorTest->getTVector()->at(toolSelectorTest->getPosition()));
+			completionText->setString(to_string(tempTool.getCompletion()));
+		}
+		gameplayManager->gameCheck(toolSelectorTest, drinkSelectorTest);
+
 		window.clear(sf::Color::White);
 		//testDrink->render(&window);
 		//testDrink9->render(&window);
+		window.draw(*completionText);
 		toolSelectorTest->render(&window);
 		drinkSelectorTest->render(&window);
 		window.display();

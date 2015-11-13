@@ -56,8 +56,26 @@ int Drink::getBaseYPos(){
 void Drink::recall(){
 	this->setXPos(this->baseXPosition);
 	this->setYPos(this->baseYPosition);
+	this->drinkSprite->setRotation(0);
 }
 
 string Drink::getName(){
 	return this->name;
+}
+
+bool Drink::isCurrentlyPouring(){
+	if (this->currentlyPouring){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+void Drink::setCurrentlyPouringFalse(){
+	this->currentlyPouring = false;
+}
+
+void Drink::setCurrentlyPouringTrue(){
+	this->currentlyPouring = true;
 }

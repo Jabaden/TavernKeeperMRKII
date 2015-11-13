@@ -83,7 +83,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Comparer.cpp" />
     <ClCompile Include="Drink.cpp" />
     <ClCompile Include="DrinkCard.cpp" />
     <ClCompile Include="DrinkDeck.cpp" />
@@ -94,7 +93,6 @@
     <ClCompile Include="ToolSelector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Comparer.h" />
     <ClInclude Include="Drink.h" />
     <ClInclude Include="DrinkCard.h" />
     <ClInclude Include="DrinkDeck.h" />

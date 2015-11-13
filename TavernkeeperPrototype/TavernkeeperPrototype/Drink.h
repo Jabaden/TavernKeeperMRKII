@@ -13,6 +13,7 @@ private:
 	int yPosition;
 	int baseYPosition;
 	int baseXPosition;
+	bool currentlyPouring;
 public:
 	Drink(int xPos, int yPos, string name);
 	void render(sf::RenderWindow* wnd);
@@ -25,4 +26,7 @@ public:
 	void setYPos(int y);
 	void recall();
 	string getName();
+	bool isCurrentlyPouring();
+	void setCurrentlyPouringTrue();
+	void setCurrentlyPouringFalse();
 };
