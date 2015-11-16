@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include "DrinkDeck.h"
 #include <iostream>
 #include <ostream>
 #include <fstream>
@@ -28,7 +27,7 @@ int main()
 	}
 	//completionFont->loadFromFile("pacText.tff");
 	completionText->setFont(font);
-	completionText->setString("this is a test string");
+	completionText->setString("");
 	completionText->setCharacterSize(30);
 	completionText->setPosition(100, 100);
 	completionText->setColor(sf::Color::Black);
@@ -50,7 +49,7 @@ int main()
 	//toolSelectorTest->raiseTool();
 	//toolSelectorTest->choose();
 
-	//FILE I/O 
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -93,12 +92,20 @@ int main()
 					}
 					//end pouring game
 					else if (gameplayManager->getPouring()){
-						gameplayManager->togglePouring();
-						drinkSelectorTest->getDVector()->at(drinkSelectorTest->getPosition())->recall();
-						toolSelectorTest->getTVector()->at(toolSelectorTest->getPosition())->recall();
-						toolSelectorTest->getTVector()->at(toolSelectorTest->getPosition())->resetCompletion();
+						gameplayManager->endPouringGame(toolSelectorTest, drinkSelectorTest);
 					}
 					
+				}
+				//"submit" the drink
+				if (event.key.code == sf::Keyboard::Return){
+					string drinkIs = gameplayManager->ascertainDrink(drinkSelectorTest);
+
+
+					gameplayManager->checkIfRightDrink(test, drinkIs);
+					//	this is where you check the drink to see if it matches!!!!!!!!!!!!!!=========================================================
+
+
+					cout << "THE DRINK IS " << drinkIs << endl;
 				}
 			}
 			//DIDNT CLICK ANYTHING
@@ -107,8 +114,11 @@ int main()
 				rotateDrink->setCurrentlyPouringFalse();
 			}
 		}
-		if (testClock.getElapsedTime().asSeconds() > 2){
+		if (testClock.getElapsedTime().asSeconds() > 10){
 			testClock.restart();
+			test->drawCard();
+			//cout << "after drawcard is done" << endl;
+			//test->printOrderQueue();
 			//testCard.pickRandomAttribute();
 		}
 
@@ -124,6 +134,7 @@ int main()
 		window.draw(*completionText);
 		toolSelectorTest->render(&window);
 		drinkSelectorTest->render(&window);
+		test->renderOrders(&window);
 		window.display();
 	}
 

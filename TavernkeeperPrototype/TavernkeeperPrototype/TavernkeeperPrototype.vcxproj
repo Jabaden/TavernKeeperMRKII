@@ -89,6 +89,7 @@
     <ClCompile Include="DrinkSelector.cpp" />
     <ClCompile Include="GameplayManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Order.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="ToolSelector.cpp" />
   </ItemGroup>
@@ -98,6 +99,7 @@
     <ClInclude Include="DrinkDeck.h" />
     <ClInclude Include="DrinkSelector.h" />
     <ClInclude Include="GameplayManager.h" />
+    <ClInclude Include="Order.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="ToolSelector.h" />
   </ItemGroup>

@@ -4,10 +4,32 @@ Drink::Drink(int xPos, int yPos, string aName){
 	//std::cout << "test";
 	drinkSprite = new sf::Sprite();
 	drinkTexture = new sf::Texture();
-	drinkTexture->loadFromFile("ScaryFace-2.png");
+	if (aName == "Whiskey"){
+		drinkTexture->loadFromFile("Whiskey.png");
+		drinkSprite->setScale(.4f, .4f);
+	}
+	else if (aName == "Wine"){
+		drinkTexture->loadFromFile("Wine.png");
+		drinkSprite->setScale(.5f, .5f);
+	}
+	else if (aName == "Firewater"){
+		drinkTexture->loadFromFile("Firewater.png");
+		drinkSprite->setScale(.3f, .3f);
+	}
+	else if (aName == "Ale"){
+		drinkTexture->loadFromFile("alebarrel.png");
+		drinkSprite->setScale(.7f, .7f);
+	}
+	else if (aName == "Garnish"){
+		drinkTexture->loadFromFile("lemon.png");
+		drinkSprite->setScale(.05f, .05f);
+	}
+	else {
+		drinkTexture->loadFromFile("ScaryFace-2.png");
+	}
 	drinkSprite->setTexture(*(drinkTexture));
 	drinkSprite->setPosition(xPos, yPos);
-	drinkSprite->setScale(.5f, .5f);
+
 
 	xPosition = xPos;
 	yPosition = yPos;

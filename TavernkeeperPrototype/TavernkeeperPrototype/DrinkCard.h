@@ -20,8 +20,15 @@ public:
 	void pickRandomAttribute();
 	void chooseAttribute(int attribute);
 	void orderUp();
-	void describeOrder();
+	string describeOrder();
 	void printCAV();
+
+	string getName();
+	string getType();
+	string getFlavorArrayZero();
+	string getFlavorArrayOne();
+
+	bVector* getCAV();
 };
 
 

@@ -19,6 +19,26 @@ DrinkSelector::DrinkSelector(){
 	drinkVector->push_back(testDrink4);
 	drinkVector->push_back(testDrink5);
 
+	fireballRecipe = new sVec();
+	fireballRecipe->push_back("Whiskey");
+	fireballRecipe->push_back("Ale");
+	fireballRecipe->push_back("Firewater");
+
+	fowRecipe = new sVec();
+	fowRecipe->push_back("Wine");
+	fowRecipe->push_back("Ale");
+
+	aleRecipe = new sVec();
+	aleRecipe->push_back("Ale");
+	aleRecipe->push_back("Garnish");
+
+	wineRecipe = new sVec();
+	wineRecipe->push_back("Wine");
+
+	whiskeyRecipe = new sVec();
+	whiskeyRecipe->push_back("Whiskey");
+
+
 
 }
 
@@ -76,6 +96,27 @@ void DrinkSelector::choose(){
 	chosenDrink->setYPos(500);
 }
 
+void DrinkSelector::setAleAmount(int amount){
+	this->aleAmount = amount;
+}
+
+void DrinkSelector::setFirewaterAmount(int amount){
+	this->firewaterAmount = amount;
+}
+
+void DrinkSelector::setGarnishAmount(int amount){
+	this->garnishAmount = amount;
+}
+
+void DrinkSelector::setWhiskeyAmount(int amount){
+	this->whiskeyAmount = amount;
+}
+
+void DrinkSelector::setWineAmount(int amount){
+	this->wineAmount = amount;
+}
+
+
 DrinkSelector::dVec* DrinkSelector::getDVector(){
 	return this->drinkVector;
 }
@@ -84,6 +125,35 @@ int DrinkSelector::getPosition(){
 	return this->position;
 }
 
+int DrinkSelector::getAleAmount(){
+	return this->aleAmount;
+}
 
+int DrinkSelector::getFirewaterAmount(){
+	return this->firewaterAmount;
+}
 
+int DrinkSelector::getGarnishAmount(){
+	return this->garnishAmount;
+}
+
+int DrinkSelector::getWhiskeyAmount(){
+	return this->whiskeyAmount;
+}
+
+int DrinkSelector::getWineAmount(){
+	return this->wineAmount;
+}
+
+DrinkSelector::sVec* DrinkSelector::getFireballRecipe(){
+	return this->fireballRecipe;
+}
+
+void DrinkSelector::resetDrinkAmounts(){
+	this->aleAmount = 0;
+	this->firewaterAmount = 0;
+	this->garnishAmount = 0;
+	this->whiskeyAmount = 0;
+	this->wineAmount = 0;
+}
 

@@ -67,27 +67,52 @@ void DrinkCard::printCAV(){
 		}
 	}
 }
-
-void DrinkCard::describeOrder(){
+//figures out what the customer is asking for based on the boolean values in the attributeVector
+string DrinkCard::describeOrder(){
+	string myOrder = "";
 	int i = 0;
 	for (auto iter = this->chosenAttributeVector->begin(); iter != this->chosenAttributeVector->end(); iter++){
 		if ((*iter) && i == 0){
 			cout << "Get me a " << this->name << "!" << endl;
-			return;
+			myOrder = "Get me a " + this->name + "!";
+			return myOrder;
 		}
 		else if ((*iter) && i == 1){
 			cout << "Get me a " << this->type << " Drink!" << endl;
-			return;
+			myOrder = "Get me a " + this->type + " Drink!";
+			return myOrder;
 		}
 		else if ((*iter) && i == 2){
 			if (this->flavorArray[0] == this->flavorArray[1]){
 				cout << "Get me a " << this->flavorArray[0] << " drink!" << endl;
+				myOrder = "Get me a " + this->flavorArray[0] + " drink!";
 			}
 			else{
 				cout << "Get me a " << this->flavorArray[0] << " or a " << this->flavorArray[1] << " drink!" << endl;
+				myOrder = "Get me a " + this->flavorArray[0] + " or a " + this->flavorArray[1] + " drink!"; 
 			}
-			return;
+			return myOrder;
 		}
 		i++;
 	}
+}
+
+DrinkCard::bVector* DrinkCard::getCAV(){
+	return this->chosenAttributeVector;
+}
+
+string DrinkCard::getFlavorArrayZero(){
+	return this->flavorArray[0];
+}
+
+string DrinkCard::getFlavorArrayOne(){
+	return this->flavorArray[1];
+}
+
+string DrinkCard::getType(){
+	return this->type;
+}
+
+string DrinkCard::getName(){
+	return this->name;
 }

@@ -1,5 +1,12 @@
-#Name		#Type		#Flavors	 
+#Name		#Type		#Flavors
+#fireball is 2 parts whiskey
+# 1 part booze
+# 1 part firewater
+#Ale
+#2 parts Ale
+#1 part Garnish	 
 &Fireball &Mixed &Spicy Strong
 &FOW &Mixed &Strong Sweet
 &Whiskey &Liquor &Strong Strong
 &Ale &Boozey &Smooth Smooth
+&Wine &Boozey &Smooth Sweet

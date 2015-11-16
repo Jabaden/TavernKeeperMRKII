@@ -1,7 +1,11 @@
 #include "DrinkDeck.h"
-
 DrinkDeck::DrinkDeck(){
+	numberOfOrders = 0;
+
 	deckOfDrinks = new dVec();
+	orderQueue = new dVec();
+	orderCardQueue = new oVec();
+
 	ifstream file("DeckOfDrinks.txt");
 	string currentLine = "";
 	string remainder = "";
@@ -71,14 +75,34 @@ DrinkDeck::dVec* DrinkDeck::getDeck(){
 	return this->deckOfDrinks;
 }
 
+DrinkDeck::dVec* DrinkDeck::getOrderQueue(){
+	return this->orderQueue;
+}
+
 DrinkCard* DrinkDeck::drawCard(){
 	//this->shuffleDeck();
+	this->numberOfOrders++;
+
+	Order* newOrder = new Order(numberOfOrders);
+
+	string tempOrder = "";
 	DrinkCard* card = deckOfDrinks->back();
 	card->pickRandomAttribute();
 	//cout << " Inside draw card" << endl;
 	card->printCard();
-	card->describeOrder();
-	deckOfDrinks->pop_back();
+
+	//displays the order popup
+	newOrder->createCard(card->describeOrder());
+	//cout << "describeOrder" << card->describeOrder() << endl;
+	orderCardQueue->push_back(newOrder);
+
+	//adds this to the order queue
+	this->orderQueue->push_back(card);
+
+	//takes it out of the drink deck
+	//THIS IS A TEST, PLEASE CHECK HERE---------------------------------------------------------------------------------
+	this->shuffleDeck();
+	//deckOfDrinks->pop_back();
 	return card;
 }
 
@@ -92,4 +116,22 @@ void DrinkDeck::printDeck(){
 	}
 }
 
+void DrinkDeck::renderOrders(sf::RenderWindow* wnd){
+	for (auto iter = this->orderCardQueue->begin(); iter != this->orderCardQueue->end(); iter++){
+		(*iter)->render(wnd);
+	}
+}
 
+void DrinkDeck::printOrderQueue(){
+	for (auto iter = this->orderQueue->begin(); iter != this->orderQueue->end(); iter++){
+		(*iter)->printCard();
+	}
+}
+
+DrinkDeck::oVec* DrinkDeck::getOrderCardQueue(){
+	return this->orderCardQueue;
+}
+
+void DrinkDeck::decrementNOO(){
+	this->numberOfOrders--;
+}

@@ -15,7 +15,7 @@ Tool::Tool(int xPos, int yPos, string aName){
 	baseYPosition = yPosition;
 	this->name = aName;
 	completion = 0;
-	completionThreshold = 2500;
+	completionThreshold = 5000;
 	tempCompletion = 0;
 
 }
